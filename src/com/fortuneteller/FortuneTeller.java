@@ -61,12 +61,6 @@ public class FortuneTeller {
 		checkForQuit(siblingsAsString);
 		int siblings = Integer.parseInt(siblingsAsString);
 
-		System.out.println("Birth month: " + birthMonth);
-		System.out.println("Age: " + age);
-		System.out.println("First name: " + firstName);
-		System.out.println("Last name: " + lastName);
-		System.out.println("Number of siblings: " + siblings);
-
 		// calculate user's years to retirement based on if their age input is even or
 		// odd
 		if (age % 2 == 0) {
@@ -82,11 +76,11 @@ public class FortuneTeller {
 		} else if (siblings == 0) {
 			vacationHomeLocation = "Atlantis";
 		} else if (siblings == 1) {
-			vacationHomeLocation = "The Shire";
+			vacationHomeLocation = "The Shire (Enjoy the second breakfasts!)";
 		} else if (siblings == 2) {
-			vacationHomeLocation = "Hogsmeade";
+			vacationHomeLocation = "Hogsmeade (I hear the butterbeer is tasty there!)";
 		} else if (siblings == 3) {
-			vacationHomeLocation = "The Hundred Acre Wood";
+			vacationHomeLocation = "The Hundred Acre Wood (It has all the honey you can eat!)";
 		} else {
 			vacationHomeLocation = "Emerald City";
 		}
