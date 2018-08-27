@@ -1,67 +1,155 @@
 package com.fortuneteller;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class FortuneTeller {
 
 	public static void main(String[] args) {
-		
+
+		// declare and initialize output variables
+		String yearsToRetirement = "";
+		String vacationHomeLocation = "";
+		double bankBalance = 0;
+		String transportationMode = "";
+
+		// open new Scanner for user input
 		Scanner input = new Scanner(System.in);
+
+		// Ask for and store user's first name
 		System.out.println("Tell me your first name.");
 		String firstName = input.nextLine();
-		System.out.println("Tell me your second name.");
+		// check if user wants to quit program
+		checkForQuit(firstName); 
+
+		// Ask for and store user's last name
+		System.out.println("Tell me your last name.");
 		String lastName = input.nextLine();
+		checkForQuit(lastName);
+
+		// Ask for and store user's age
 		System.out.println("Tell me your age.");
-		int age = input.nextInt();
-		input.nextLine();
+		String ageAsString = input.nextLine();
+		checkForQuit(ageAsString);
+		int age = Integer.parseInt(ageAsString);
+
+		// Ask for and store user's birth month as a number
 		System.out.println("What month were you born? Enter month as a number.");
-		int birthMonth = input.nextInt();
-		input.nextLine();
-		System.out.println("What's your favorite ROYGBIV color? Enter \"help\" for a list of ROYGBIV colors if you were never taught about rainbows.");
+		String birthMonthAsString = input.nextLine();
+		checkForQuit(birthMonthAsString);
+		int birthMonth = Integer.parseInt(birthMonthAsString);
+
+		// Ask for and store user's favorite ROYGBIV color
+		System.out.println(
+				"What's your favorite ROYGBIV color? Enter \"help\" for a list of ROYGBIV colors if you were never taught about rainbows.");
 		String color = input.nextLine();
-		while(!color.toLowerCase().equals("red")
-				&& !color.toLowerCase().equals("orange")
-				&& !color.toLowerCase().equals("yellow")
-			    && !color.toLowerCase().equals("green")
-				&& !color.toLowerCase().equals("blue")
-				&& !color.toLowerCase().equals("indigo")
-				&& !color.toLowerCase().equals("violet")) {
+		checkForQuit(color);
+		color = color.toLowerCase();
+
+		// list ROYGBIV colors if user types help
+		while (color.equals("help")) {
 			System.out.println("ROYGBIV colors are Red, Orange, Yellow, Green, Blue, Indigo, Violet");
 			color = input.nextLine();
-			
+			checkForQuit(color);
+			color = color.toLowerCase();
 		}
+
+		// ask for and store number of siblings the user has
 		System.out.println("How many siblings do you have?");
-		int siblings = input.nextInt();
-		input.nextLine();
+		String siblingsAsString = input.nextLine();
+		checkForQuit(siblingsAsString);
+		int siblings = Integer.parseInt(siblingsAsString);
+
 		System.out.println("Birth month: " + birthMonth);
-		System.out.println("Age: "+ age);
+		System.out.println("Age: " + age);
 		System.out.println("First name: " + firstName);
 		System.out.println("Last name: " + lastName);
 		System.out.println("Number of siblings: " + siblings);
-		
-		if(age % 2 == 0) {
-			System.out.println("You will retire in 1 year! Lucky you!");
-		} else {
-			System.out.println("You still have 25 years until retirement, sorry...");
-		}
-		if(siblings == 0) {
-			System.out.println("Your vacation home is in Atlantis.");
-			
-		} else if(siblings == 1) {
-			System.out.println("Your vacation home is in the Shire. Enjoyh the second breakfasts!");
-		} else if(siblings == 2) {
-			System.out.println("Your vacation home is in Hogsmeade. I hear the butterbeer is good there.");
-		} else if(siblings == 3) {
-			System.out.println("Your vacation home is in the Hundred Acre Wood. All the honey you can eat!");
-		} else {
-			System.out.println("Your vacation home is on Amity Island. Watch out for sharks...");
-		}
-		//mode of transportation here
-		
-		
-		
-		
 
+		// calculate user's years to retirement based on if their age input is even or
+		// odd
+		if (age % 2 == 0) {
+			yearsToRetirement = "8 years";
+		} else {
+			yearsToRetirement = "25 years";
+		}
+
+		// determine user's vacation home location from their input for number of
+		// siblings
+		if (siblings < 0) {
+			vacationHomeLocation = "Amity Island (Watch out for sharks...)";
+		} else if (siblings == 0) {
+			vacationHomeLocation = "Atlantis";
+		} else if (siblings == 1) {
+			vacationHomeLocation = "The Shire";
+		} else if (siblings == 2) {
+			vacationHomeLocation = "Hogsmeade";
+		} else if (siblings == 3) {
+			vacationHomeLocation = "The Hundred Acre Wood";
+		} else {
+			vacationHomeLocation = "Emerald City";
+		}
+
+		// determine user's mode of transportation from their favorite ROYGBIV color
+		// input
+		switch (color) {
+		case "red":
+			transportationMode = "race car";
+			break;
+		case "orange":
+			transportationMode = "eagle";
+			break;
+		case "yellow":
+			transportationMode = "broomstick";
+			break;
+		case "green":
+			transportationMode = "unicycle";
+			break;
+		case "blue":
+			transportationMode = "pirate ship";
+			break;
+		case "indigo":
+			transportationMode = "magic carpet";
+			break;
+		case "violet":
+			transportationMode = "unicorn";
+			break;
+		}
+
+		// calculate user's bank balance based on user's birth month as a number
+		if (birthMonth > 0 && birthMonth < 5) {
+			bankBalance = 455432324.33;
+		} else if (birthMonth > 4 && birthMonth < 9) {
+			bankBalance = 644554.74;
+		} else if (birthMonth > 8 && birthMonth < 13) {
+			bankBalance = 5216.44;
+		} else {
+			bankBalance = 0.00;
+		}
+		NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.US);
+
+		// output user's fortune
+		System.out.println("*" + firstName + "* *" + lastName + "* will retire in *" + yearsToRetirement + "* with *"
+				+ currency.format(bankBalance) + "* in the bank, a vacation home in *" + vacationHomeLocation
+				+ "*, and travel by *" + transportationMode + "*.");
+
+		// close Scanner input
+		input.close();
+
+		// check for DRY code
+		// comment
+		// format whitespace
+		// while loop for help?
+
+	}
+
+	public static void checkForQuit(String input) {
+		// check if input is "quit" and if so quit program
+		if (input.toLowerCase().equals("quit")) {
+			System.out.println("No one likes a quitter...");
+			System.exit(0);
+		}
 	}
 
 }
