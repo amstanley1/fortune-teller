@@ -17,7 +17,7 @@ public class FortuneTeller {
 		System.out.println("What month were you born? Enter month as a number.");
 		int birthMonth = input.nextInt();
 		input.nextLine();
-		System.out.println("What's your favorite ROYGBIV color? Enter help if you've never learned about rainbows.");
+		System.out.println("What's your favorite ROYGBIV color? Enter \"help\" for a list of ROYGBIV colors if you were never taught about rainbows.");
 		String color = input.nextLine();
 		while(!color.toLowerCase().equals("red")
 				&& !color.toLowerCase().equals("orange")
@@ -39,7 +39,11 @@ public class FortuneTeller {
 		System.out.println("Last name: " + lastName);
 		System.out.println("Number of siblings: " + siblings);
 		
-		
+		if(age % 2 == 0) {
+			System.out.println("You will retire in 1 year! Lucky you!");
+		} else {
+			System.out.println("You still have 25 years until retirement, sorry...");
+		}
 		
 		
 		
