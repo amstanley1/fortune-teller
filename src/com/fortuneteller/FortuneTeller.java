@@ -136,12 +136,6 @@ public class FortuneTeller {
 
 		// close Scanner input
 		input.close();
-
-		// check for DRY code
-		// comment
-		// format whitespace
-		// while loop for help?
-
 	}
 
 	public static void checkForQuit(String input) {
@@ -151,5 +145,4 @@ public class FortuneTeller {
 			System.exit(0);
 		}
 	}
-
 }
