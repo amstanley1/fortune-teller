@@ -17,7 +17,7 @@ public class FortuneTeller {
 		System.out.println("What month were you born? Enter month as a number.");
 		int birthMonth = input.nextInt();
 		input.nextLine();
-		System.out.println("What's your favorite ROYGBIV color? Enter help if you've never learned about rainbows.");
+		System.out.println("What's your favorite ROYGBIV color? Enter \"help\" for a list of ROYGBIV colors if you were never taught about rainbows.");
 		String color = input.nextLine();
 		while(!color.toLowerCase().equals("red")
 				&& !color.toLowerCase().equals("orange")
@@ -39,7 +39,24 @@ public class FortuneTeller {
 		System.out.println("Last name: " + lastName);
 		System.out.println("Number of siblings: " + siblings);
 		
-		
+		if(age % 2 == 0) {
+			System.out.println("You will retire in 1 year! Lucky you!");
+		} else {
+			System.out.println("You still have 25 years until retirement, sorry...");
+		}
+		if(siblings == 0) {
+			System.out.println("Your vacation home is in Atlantis.");
+			
+		} else if(siblings == 1) {
+			System.out.println("Your vacation home is in the Shire. Enjoyh the second breakfasts!");
+		} else if(siblings == 2) {
+			System.out.println("Your vacation home is in Hogsmeade. I hear the butterbeer is good there.");
+		} else if(siblings == 3) {
+			System.out.println("Your vacation home is in the Hundred Acre Wood. All the honey you can eat!");
+		} else {
+			System.out.println("Your vacation home is on Amity Island. Watch out for sharks...");
+		}
+		//mode of transportation here
 		
 		
 		
