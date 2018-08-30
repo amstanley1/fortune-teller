@@ -18,7 +18,7 @@ public class FortuneTeller {
 		Scanner input = new Scanner(System.in);
 
 		// Ask for and store user's first name
-		System.out.println("Tell me your first name.");
+		System.out.println("Tell me your first name. (You can also type \"quit\" in response to any question to exit the program.)");
 		String firstName = input.nextLine();
 		// check if user wants to quit program
 		checkForQuit(firstName); 
@@ -42,14 +42,14 @@ public class FortuneTeller {
 
 		// Ask for and store user's favorite ROYGBIV color
 		System.out.println(
-				"What's your favorite ROYGBIV color? Enter \"help\" for a list of ROYGBIV colors if you were never taught about rainbows.");
+				"What's your favorite ROYGBIV color? Type \"help\" for a list of ROYGBIcolors if you were never taught about rainbows.");
 		String color = input.nextLine();
 		checkForQuit(color);
 		color = color.toLowerCase();
 
 		// list ROYGBIV colors if user types help
 		while (color.equals("help")) {
-			System.out.println("ROYGBIV colors are Red, Orange, Yellow, Green, Blue, Indigo, Violet");
+			System.out.println("ROYGBIV colors are Red, Orange, Yellow, Green, Blue, Indigo, Violet.");
 			color = input.nextLine();
 			checkForQuit(color);
 			color = color.toLowerCase();
