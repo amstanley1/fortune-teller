@@ -42,7 +42,7 @@ public class FortuneTeller {
 
 		// Ask for and store user's favorite ROYGBIV color
 		System.out.println(
-				"What's your favorite ROYGBIV color? Type \"help\" for a list of ROYGBIcolors if you were never taught about rainbows.");
+				"What's your favorite ROYGBIV color? Type \"help\" for a list of ROYGBIV colors if you were never taught about rainbows.");
 		String color = input.nextLine();
 		checkForQuit(color);
 		color = color.toLowerCase();
@@ -50,6 +50,7 @@ public class FortuneTeller {
 		// list ROYGBIV colors if user types help
 		while (color.equals("help")) {
 			System.out.println("ROYGBIV colors are Red, Orange, Yellow, Green, Blue, Indigo, Violet.");
+			System.out.println("What's your favorite ROYGBIV color?");
 			color = input.nextLine();
 			checkForQuit(color);
 			color = color.toLowerCase();
