@@ -86,7 +86,6 @@ public class FortuneTeller {
 		}
 
 		// determine user's mode of transportation from their favorite ROYGBIV color
-		// input
 		switch (color) {
 		case "red":
 			transportationMode = "race car";
